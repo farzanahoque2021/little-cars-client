@@ -1,5 +1,6 @@
 
 import logo from '../../../assets/car-logo.png'
+import img1 from '../../../assets/gallery1.jpg'
 const Header = () => {
     return (
         <div className="navbar">
@@ -33,10 +34,10 @@ const Header = () => {
             <div className="navbar-end">
                 <label className="btn btn-ghost btn-circle avatar">
                     <div className="w-10 rounded-full">
-                        <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                        <img src={img1} />
                     </div>
                 </label>
-                <a className="btn">Login</a>
+                <a className='btn bg-gradient-to-t from-blue-700 to-sky-500 border-none'>Login</a>
             </div>
         </div>
     );
