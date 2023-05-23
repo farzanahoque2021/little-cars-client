@@ -4,8 +4,8 @@ import img3 from '../../../assets/gallery3.jpg'
 import img4 from '../../../assets/gallery4.jpg'
 const Gallery = () => {
     return (
-        <div className='my-4'>
-            <h2 className='text-center font-bold text-4xl text-sky-600 mb-4'>Gallery</h2>
+        <div className='my-7'>
+            <h2 className='text-center font-bold text-4xl text-sky-600 mb-4'>Our Gallery</h2>
             <div className="flex items-center justify-center">
                 <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-4">
                     <div className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
