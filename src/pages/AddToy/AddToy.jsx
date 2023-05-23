@@ -1,5 +1,8 @@
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const AddToy = () => {
+    const { user } = useContext(AuthContext)
     const handleAddToy = event => {
         event.preventDefault();
 
@@ -12,8 +15,9 @@ const AddToy = () => {
         const subCategory = form.subCategory.value;
         const picture = form.picture.value;
         const details = form.details.value;
+        const quantity = form.quantity.value;
 
-        const newToy = { name, seller, email, price, rating, subCategory, picture, details }
+        const newToy = { name, seller, email, price, rating, subCategory, picture, details, quantity }
         console.log(newToy)
 
         fetch('http://localhost:5000/addtoy', {
@@ -49,13 +53,13 @@ const AddToy = () => {
                                     <label className="label">
                                         <span className="label-text">Your Name</span>
                                     </label>
-                                    <input type="text" name="seller" placeholder="Name" className="input input-bordered" />
+                                    <input type="text" name="seller" defaultValue={user?.displayName} placeholder="Name" className="input input-bordered" />
                                 </div>
                                 <div className="form-control w-1/2">
                                     <label className="label">
                                         <span className="label-text">Email</span>
                                     </label>
-                                    <input type="email" name="email" placeholder="Your Email" className="input input-bordered" />
+                                    <input type="email" name="email" defaultValue={user?.email} placeholder="Your Email" className="input input-bordered" />
 
                                 </div>
                             </div>
@@ -65,6 +69,13 @@ const AddToy = () => {
                                         <span className="label-text">Price</span>
                                     </label>
                                     <input type="number" name="price" placeholder="Price" className="input input-bordered" />
+                                </div>
+                                <div className="form-control w-1/2">
+                                    <label className="label">
+                                        <span className="label-text">Quantity</span>
+                                    </label>
+                                    <input type="number" name="quantity" placeholder="quantity" className="input input-bordered" />
+
                                 </div>
                                 <div className="form-control w-1/2">
                                     <label className="label">
