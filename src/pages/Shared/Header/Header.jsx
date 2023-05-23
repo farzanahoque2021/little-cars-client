@@ -1,7 +1,19 @@
-
+import { useContext } from 'react';
 import logo from '../../../assets/car-logo.png'
-import img1 from '../../../assets/gallery1.jpg'
+import { AuthContext } from '../../../providers/AuthProvider';
+import { Link } from 'react-router-dom';
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
+    }
     return (
         <div className="navbar">
             <div className="navbar-start">
@@ -32,12 +44,14 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <label className="btn btn-ghost btn-circle avatar">
-                    <div className="w-10 rounded-full">
-                        <img src={img1} />
-                    </div>
-                </label>
-                <a className='btn bg-gradient-to-t from-blue-700 to-sky-500 border-none'>Login</a>
+                {
+                    user ? <div className='flex'><label className="btn btn-ghost btn-circle avatar tooltip tooltip-left tooltip-success mr-2" data-tip={user.displayName}>
+                        <div className="w-12 rounded-full">
+                            <img src={user.photoURL} />
+                        </div>
+                    </label><button onClick={handleLogOut} className="btn bg-gradient-to-t from-blue-700 to-sky-500 border-none">Log out</button></div> : <Link to="/login"><button className="btn bg-gradient-to-t from-blue-700 to-sky-500 border-none">Login</button></Link>
+                }
+
             </div>
         </div>
     );
