@@ -1,5 +1,7 @@
+import AllCategory from "../AllCategory/AllCategory";
 import Banner from "../Banner/Banner";
 import Gallery from "../Gallery/Gallery";
+
 
 
 
@@ -8,6 +10,8 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <Gallery></Gallery>
+            <AllCategory></AllCategory>
+
 
         </div>
     );

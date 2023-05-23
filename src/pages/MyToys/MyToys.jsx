@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+import { Link } from "react-router-dom";
 
 
 const MyToys = () => {
@@ -52,7 +53,7 @@ const MyToys = () => {
                                     <td>{toy.quantity} pcs</td>
                                     <td>{toy.details} pcs</td>
                                     <th>
-                                        <button className="btn btn-outline btn-success">Update</button>
+                                        <Link><button className="btn btn-outline btn-success">Update</button></Link>
                                     </th>
                                     <th>
                                         <button className="btn btn-outline btn-error">Delete</button>
