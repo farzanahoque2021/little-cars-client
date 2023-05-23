@@ -1,12 +1,31 @@
 
 const AddToy = () => {
+    const handleAddToy = event => {
+        event.preventDefault();
+
+        const form = event.target;
+        const name = form.name.value;
+        const seller = form.seller.value;
+        const email = form.email.value;
+        const price = form.price.value;
+        const rating = form.rating.value;
+        const subCategory = form.subCategory.value;
+        const picture = form.picture.value;
+        const details = form.details.value;
+
+        const newToy = { name, seller, email, price, rating, subCategory, picture, details }
+        console.log(newToy)
+
+
+
+    }
     return (
         <div>
             <h2 className="text-center font-bold text-3xl text-cyan-600">Add Toy</h2>
             <div className="flex items-center justify-center bg-sky-50 mt-4 p-12">
                 <div className="w-1/2 mx-auto shadow-xl rounded-lg bg-base-100">
                     <div className="card-body">
-                        <form>
+                        <form onSubmit={handleAddToy}>
                             <div className="form-control w-full">
                                 <label className="label">
                                     <span className="label-text">Toy Name</span>
@@ -64,7 +83,7 @@ const AddToy = () => {
                                     <label className="label">
                                         <span className="label-text">Picture URL</span>
                                     </label>
-                                    <input type="photoURL" name="photo" placeholder="Picture URL" className="input input-bordered" />
+                                    <input type="photoURL" name="picture" placeholder="Picture URL" className="input input-bordered" />
 
                                 </div>
                             </div>
@@ -77,7 +96,7 @@ const AddToy = () => {
                                 </textarea>
                             </div>
                             <div className="form-control mt-6 w-1/2 mx-auto">
-                                <input type="button" className="btn btn-outline btn-success" value="Add"></input>
+                                <input type="submit" className="btn btn-outline btn-success" value="Add"></input>
                             </div>
                         </form>
                     </div>
