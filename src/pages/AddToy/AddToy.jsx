@@ -16,8 +16,20 @@ const AddToy = () => {
         const newToy = { name, seller, email, price, rating, subCategory, picture, details }
         console.log(newToy)
 
-
-
+        fetch('http://localhost:5000/addtoy', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newToy)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.insertedId) {
+                    alert("Toy has been added successfully!")
+                }
+            })
     }
     return (
         <div>
