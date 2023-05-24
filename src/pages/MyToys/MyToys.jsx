@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
-import { Link } from "react-router-dom";
 import useTitle from "../../hooks/useTitle";
+import { Link } from "react-router-dom";
+
 
 
 const MyToys = () => {
@@ -18,6 +19,8 @@ const MyToys = () => {
             })
 
     }, [user])
+
+
 
     const handleSortDescend = () => {
         fetch(`http://localhost:5000/sortToysDescend/${user?.email}`)
@@ -72,14 +75,16 @@ const MyToys = () => {
                                     <td>{toy.rating} </td>
                                     <td>{toy.quantity} pcs</td>
                                     <td>{toy.details} pcs</td>
-                                    <th>
-                                        <Link><button className="btn btn-outline btn-success">Update</button></Link>
-                                    </th>
-                                    <th>
+                                    <td>
+                                        <Link to={`/updatetoy/${toy._id}`}><button className="btn btn-outline btn-success ">Update</button></Link>
+                                    </td>
+
+                                    <td>
                                         <button className="btn btn-outline btn-error">Delete</button>
-                                    </th>
+                                    </td>
                                 </tr>)
                         }
+
 
                     </tbody>
 
