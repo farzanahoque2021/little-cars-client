@@ -26,10 +26,19 @@ const MyToys = () => {
                 setToys(data)
             })
     }
+
+    const handleSortAscend = () => {
+        fetch(`http://localhost:5000/sortToysAscend/${user?.email}`)
+            .then(res => res.json())
+            .then(data => {
+                setToys(data)
+            })
+    }
     return (
         <div>
             <h3 className="text-3xl text-sky-600 font-bold text-center mb-4">Toys Added By: {user?.displayName}</h3>
-            <p className="text-center mb-4">Sort By Price: <button onClick={handleSortDescend} className="btn btn-success">High to Low</button></p>
+            <p className="text-center mb-4">Sort By Price: <button onClick={handleSortDescend} className="btn btn-success ml-4">High to Low</button>
+                <button onClick={handleSortAscend} className="btn btn-success ml-4">Low to High</button></p>
             <div className="overflow-x-auto w-full">
                 <table className="table mx-auto">
                     <thead>
