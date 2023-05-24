@@ -2,6 +2,7 @@
 import { FaStar, FaStarHalfAlt } from 'react-icons/fa'
 import { AiOutlineStar } from 'react-icons/ai'
 import { HiCurrencyDollar, HiArrowSmRight } from 'react-icons/hi'
+import { Link } from 'react-router-dom';
 const ToyCard = ({ toy }) => {
     const { _id, picture, name, price, rating } = toy;
     const ratingStar = Array.from({ length: 5 }, (element, index) => {
@@ -18,7 +19,7 @@ const ToyCard = ({ toy }) => {
         )
     })
     return (
-        <div className="card bg-base-100 shadow-xl">
+        <div className="card shadow-xl bg-base-100">
             <figure className="px-10 pt-10">
                 <img src={picture} alt="toy picture" className="rounded-xl" />
             </figure>
@@ -30,7 +31,7 @@ const ToyCard = ({ toy }) => {
                 </div>
 
                 <div className="card-actions">
-                    <button className="btn btn-outline border-none bg-[#91C0BE]">View Details<HiArrowSmRight /></button>
+                    <Link to={`toy/${_id}`}><button className="btn btn-outline border-none bg-[#91C0BE]">View Details<HiArrowSmRight /></button></Link>
                 </div>
             </div>
         </div>

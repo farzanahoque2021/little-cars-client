@@ -42,7 +42,8 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser)
-                navigate('/');
+                // navigate('/');
+                navigate(from, { replace: true });
                 setError('');
             })
             .catch(error => {
