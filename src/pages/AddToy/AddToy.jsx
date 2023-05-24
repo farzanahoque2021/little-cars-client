@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import useTitle from "../../hooks/useTitle";
+import Swal from 'sweetalert2'
 
 const AddToy = () => {
     const { user } = useContext(AuthContext)
@@ -33,7 +34,12 @@ const AddToy = () => {
             .then(data => {
                 console.log(data)
                 if (data.insertedId) {
-                    alert("Toy has been added successfully!")
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Toy Added Successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    })
                 }
             })
     }
@@ -65,21 +71,21 @@ const AddToy = () => {
 
                                 </div>
                             </div>
-                            <div className="flex gap-2">
-                                <div className="form-control w-1/2">
+                            <div className="flex gap-2 flex-wrap">
+                                <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Price</span>
                                     </label>
                                     <input type="number" name="price" placeholder="Price" className="input input-bordered" />
                                 </div>
-                                <div className="form-control w-1/2">
+                                <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Quantity</span>
                                     </label>
                                     <input type="number" name="quantity" placeholder="quantity" className="input input-bordered" />
 
                                 </div>
-                                <div className="form-control w-1/2">
+                                <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Rating</span>
                                     </label>

@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import useTitle from "../../hooks/useTitle";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 
@@ -39,19 +40,38 @@ const MyToys = () => {
     }
 
     const handleDelete = id => {
-        fetch(`https://little-cars-server-farzanahoque2021.vercel.app/mytoys/${id}`, {
-            method: 'DELETE',
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`https://little-cars-server-farzanahoque2021.vercel.app/mytoys/${id}`, {
+                    method: 'DELETE',
+                })
+                    .then(res => res.json())
+                    .then(data => {
+
+                        if (data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your Toy has been deleted.',
+                                'success'
+                            )
+                            const remaining = toys.filter(toy => toy._id !== id);
+                            setToys(remaining)
+                        }
+                    })
+            }
         })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                if (data.deletedCount > 0) {
-                    alert('deleted successfully');
-                    const remaining = toys.filter(toy => toy._id !== id);
-                    setToys(remaining)
-                }
-            })
+
     }
+
+
     return (
         <div>
             <h3 className="text-3xl text-sky-600 font-bold text-center mb-4">Toys Added By: {user?.displayName}</h3>

@@ -1,6 +1,8 @@
 
 
 const Blog = () => {
+
+
     return (
         <div className="bg-sky-50">
             <h2 className="text-center text-3xl text-sky-600 font-bold my-4 underline">Answers</h2>
