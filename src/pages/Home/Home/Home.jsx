@@ -1,4 +1,5 @@
 import useTitle from "../../../hooks/useTitle";
+import AboutSection from "../AboutSection/AboutSection";
 import AllCategory from "../AllCategory/AllCategory";
 import Banner from "../Banner/Banner";
 import Gallery from "../Gallery/Gallery";
@@ -15,6 +16,7 @@ const Home = () => {
             <Gallery></Gallery>
             <SectionIcon></SectionIcon>
             <AllCategory></AllCategory>
+            <AboutSection></AboutSection>
 
 
         </div>
