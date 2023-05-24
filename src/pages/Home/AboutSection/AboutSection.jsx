@@ -1,4 +1,4 @@
-import { AiOutlineCheckCircle } from 'react-icons/ai'
+
 
 const AboutSection = () => {
     return (
