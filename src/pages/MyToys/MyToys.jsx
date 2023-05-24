@@ -37,6 +37,21 @@ const MyToys = () => {
                 setToys(data)
             })
     }
+
+    const handleDelete = id => {
+        fetch(`http://localhost:5000/mytoys/${id}`, {
+            method: 'DELETE',
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.deletedCount > 0) {
+                    alert('deleted successfully');
+                    const remaining = toys.filter(toy => toy._id !== id);
+                    setToys(remaining)
+                }
+            })
+    }
     return (
         <div>
             <h3 className="text-3xl text-sky-600 font-bold text-center mb-4">Toys Added By: {user?.displayName}</h3>
@@ -80,7 +95,7 @@ const MyToys = () => {
                                     </td>
 
                                     <td>
-                                        <button className="btn btn-outline btn-error">Delete</button>
+                                        <button onClick={() => handleDelete(toy._id)} className="btn btn-outline btn-error">Delete</button>
                                     </td>
                                 </tr>)
                         }
