@@ -3,11 +3,13 @@ import img from '../../assets/signup.jpg'
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 import { updateProfile } from "firebase/auth";
+import useTitle from '../../hooks/useTitle';
 
 const SignUp = () => {
     const { user, createUser } = useContext(AuthContext);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
+    useTitle('Signup')
 
     const navigate = useNavigate();
 
