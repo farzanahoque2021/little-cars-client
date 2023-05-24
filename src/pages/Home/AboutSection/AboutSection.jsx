@@ -2,8 +2,8 @@
 
 const AboutSection = () => {
     return (
-        <div>
-            <div className="grid grid-cols-1 lg:grid-cols-2 w-3/4 mx-auto gap-8 my-10">
+        <div className="my-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 w-3/4 mx-auto gap-8">
                 <div><img src="https://i.ibb.co/7ptt0QN/kid-playing-home.jpg" alt="" className="rounded-lg" /></div>
                 <div>
                     <h2 className="text-3xl font-bold text-sky-600">About Us</h2>

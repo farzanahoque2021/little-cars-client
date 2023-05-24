@@ -22,7 +22,7 @@ const AddToy = () => {
         const newToy = { name, seller, email, price, rating, subCategory, picture, details, quantity }
         console.log(newToy)
 
-        fetch('http://localhost:5000/addtoy', {
+        fetch('https://little-cars-server-farzanahoque2021.vercel.app/addtoy', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

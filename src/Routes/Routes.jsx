@@ -37,12 +37,12 @@ const router = createBrowserRouter([
             {
                 path: '/updatetoy/:id',
                 element: <UpdateToy></UpdateToy>,
-                loader: ({ params }) => fetch(`http://localhost:5000/updatedtoy/${params.id}`)
+                loader: ({ params }) => fetch(`https://little-cars-server-farzanahoque2021.vercel.app/updatedtoy/${params.id}`)
             },
             {
                 path: '/toy/:id',
                 element: <PrivateRoute><SingleToy></SingleToy></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/toy/${params.id}`)
+                loader: ({ params }) => fetch(`https://little-cars-server-farzanahoque2021.vercel.app/toy/${params.id}`)
             },
 
             {

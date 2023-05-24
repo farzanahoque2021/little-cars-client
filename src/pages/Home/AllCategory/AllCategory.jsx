@@ -9,7 +9,7 @@ const AllCategory = () => {
     const [activeTab, setActiveTab] = useState("battery")
 
     useEffect(() => {
-        fetch(`http://localhost:5000/allToysByCategory/${activeTab}`)
+        fetch(`https://little-cars-server-farzanahoque2021.vercel.app/allToysByCategory/${activeTab}`)
             .then((res) => res.json())
             .then((result) => {
                 setToys(result);
