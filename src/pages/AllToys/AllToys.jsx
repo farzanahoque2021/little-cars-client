@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import useTitle from "../../hooks/useTitle";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import Swal from 'sweetalert2'
 
 
 const AllToys = () => {
@@ -25,6 +26,15 @@ const AllToys = () => {
                 console.log(data)
                 setToys(data);
             })
+    }
+
+    const handleViewClick = () => {
+        Swal.fire({
+            title: 'You have to login first to view details',
+            text: 'Do you want to continue?',
+            icon: 'warning',
+            confirmButtonText: 'Okay'
+        })
     }
     return (
         <div>
@@ -63,7 +73,7 @@ const AllToys = () => {
                                     <td>${toy.price} </td>
                                     <td>{toy.quantity} pcs</td>
                                     <th>
-                                        <Link to={`/toy/${toy._id}`}><button className="btn btn-outline btn-success">View Details</button></Link>
+                                        <Link to={`/toy/${toy._id}`}><button onClick={() => { !user && handleViewClick() }} className="btn btn-outline btn-success">View Details</button></Link>
                                     </th>
                                 </tr>)
                         }

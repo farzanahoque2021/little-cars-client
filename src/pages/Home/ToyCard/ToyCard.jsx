@@ -3,7 +3,11 @@ import { FaStar, FaStarHalfAlt } from 'react-icons/fa'
 import { AiOutlineStar } from 'react-icons/ai'
 import { HiCurrencyDollar, HiArrowSmRight } from 'react-icons/hi'
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2'
+import { useContext } from 'react';
+import { AuthContext } from '../../../providers/AuthProvider';
 const ToyCard = ({ toy }) => {
+    const { user } = useContext(AuthContext)
     const { _id, picture, name, price, rating } = toy;
     const ratingStar = Array.from({ length: 5 }, (element, index) => {
         let number = index + 0.5;
@@ -18,6 +22,15 @@ const ToyCard = ({ toy }) => {
             </span>
         )
     })
+
+    const handleViewClick = () => {
+        Swal.fire({
+            title: 'You have to login first to view details',
+            text: 'Do you want to continue?',
+            icon: 'warning',
+            confirmButtonText: 'Okay'
+        })
+    }
     return (
         <div className="card shadow-xl bg-base-100">
             <figure className="px-10 pt-10">
@@ -31,7 +44,7 @@ const ToyCard = ({ toy }) => {
                 </div>
 
                 <div className="card-actions">
-                    <Link to={`toy/${_id}`}><button className="btn btn-outline border-none bg-[#91C0BE]">View Details<HiArrowSmRight /></button></Link>
+                    <Link to={`toy/${_id}`}><button onClick={() => { !user && handleViewClick() }} className="btn btn-outline btn-info">View Details<HiArrowSmRight /></button></Link>
                 </div>
             </div>
         </div>
