@@ -108,7 +108,7 @@ const MyToys = () => {
                                     <td>{toy.subCategory}</td>
                                     <td>${toy.price} </td>
                                     <td>{toy.rating} </td>
-                                    <td>{toy.quantity} pcs</td>
+                                    <td>{toy.quantity} </td>
                                     <td>{toy.details} pcs</td>
                                     <td>
                                         <Link to={`/updatetoy/${toy._id}`}><button className="btn btn-outline btn-success ">Update</button></Link>
